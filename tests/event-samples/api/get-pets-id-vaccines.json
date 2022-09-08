@@ -1,0 +1,14 @@
+{
+    "resource": "/pets/{id}/vaccines",
+    "path": "/pets/123/vaccines",
+    "httpMethod": "GET",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br"
+    },
+    "queryStringParameters": null,
+    "pathParameters": {
+        "id": "123"
+    },
+    "body": null
+}

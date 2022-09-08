@@ -1,0 +1,13 @@
+{
+    "resource": "/pets",
+    "path": "/pets",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "body": "{\n    \"name\": \"Chucky\",\n    \"dob\": \"1988-11-09T00:22:29+0000\",\n    \"colors\": [\n        \"red\",\n        \"black\"\n    ],\n    \"achievements\": {\n        \"miss\": 0,\n        \"hits\": 79\n    }\n}",
+    "isBase64Encoded": false
+}

@@ -1,0 +1,12 @@
+{
+    "resource": "/pets",
+    "path": "/pets/",
+    "httpMethod": "GET",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "body": null
+}
