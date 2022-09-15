@@ -4,7 +4,7 @@
         "url": "https://github.com/tmorell/aws-serverless-router/issues"
     },
     "dependencies": {},
-    "description": "Aws Serverless Router",
+    "description": "AWS Serverless Router",
     "devDependencies": {
         "@types/aws-lambda": "8.10.104",
         "@types/jest": "29.0.2",
@@ -26,7 +26,10 @@
     "engines": {
         "node": ">=14"
     },
-    "homepage": "https://github.com/tmorell/aws-serverless-routing",
+    "files": [
+        "/lib/**/*"
+    ],
+    "homepage": "https://github.com/tmorell/aws-serverless-router",
     "keywords": [
         "aws",
         "lambda",
@@ -35,13 +38,12 @@
         "SNS",
         "SQS"
     ],
-    "license": "UNLICENSED",
+    "license": "MIT",
     "main": "lib/index.js",
     "name": "aws-serverless-router",
-    "private": true,
     "repository": {
         "type": "git",
-        "url": "git@github.com:tmorell/aws-serverless-routing.git"
+        "url": "git@github.com:tmorell/aws-serverless-router.git"
     },
     "scripts": {
         "all": "npm run build && npm run lint && npm run test:ci",

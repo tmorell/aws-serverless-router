@@ -7,7 +7,7 @@
 
 ![npm](https://img.shields.io/npm/v/aws-serverless-router)
 ![node](https://img.shields.io/node/v/aws-serverless-router)
-![NPM](https://img.shields.io/npm/l/aws-serverless-router)
+![npm](https://img.shields.io/npm/l/aws-serverless-router)
 
 </div>
 
