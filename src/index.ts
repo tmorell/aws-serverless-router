@@ -4,12 +4,12 @@ import { apiGateway } from "./api-gateway";
 import { ApiGatewayError } from "./api-gateway-error";
 import { EventError } from "./event-error";
 import { eventRouter } from "./event-router";
-import type { EventSource, HttpRequest, HttpResponse, RecordEvent, Options, Response, Route, Router, HttpVerb } from "./interfaces";
+import type { ApiCallback, EventSource, HttpRequest, HttpResponse, RecordEvent, Options, Response, Route, Router, HttpVerb } from "./interfaces";
 
 const router = (options: Options = {}): Readonly<Router> => {
     const routes: Array<Route> = [];
-    const addApiRoute = (source: EventSource, verb: HttpVerb): (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void =>
-        (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>): void => {
+    const addApiRoute = (source: EventSource, verb: HttpVerb): (path: string, callback: ApiCallback) => void =>
+        (path: string, callback: ApiCallback): void => {
             routes.push({ source, route: { path, verb, callback } });
         };
     const addSnsRoute = (source: EventSource): (topic: string, callback: (record: SNSEventRecord) => Promise<void>) => void =>

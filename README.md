@@ -20,7 +20,8 @@ exports.handler = async (event) => {
     const router = Router({
         cors: "https://pets.io",
     });
-    router.get("/pets", async (req: HttpRequest, res: HttpResponse) => {
+    router.get("/pets", async (req: HttpRequest, res: HttpResponse, event: APIGatewayEvent) => {
+        console.log(event);
         res.setBody(await getPets());
     });
     router.get("/pets/{id}", async (req: HttpRequest, res: HttpResponse) => {

@@ -51,7 +51,7 @@ export const apiGateway = async (event: APIGatewayEvent, routes: Array<Route>, o
             body: event.body ? JSON.parse(event.body) : null,
             params: event.pathParameters,
             query: event.queryStringParameters,
-        }), res);
+        }), res, event);
         return Object.freeze({
             api: (<GetResponse>res).getResponse(options),
             events: 1,
