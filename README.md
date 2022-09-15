@@ -1,3 +1,16 @@
+![GitHub Actions](https://github.com/tmorell/aws-serverless-router/actions/workflows/ci.yaml/badge.svg)
+![Snyk Vulnerabilities for npm scoped package](https://img.shields.io/snyk/vulnerabilities/npm/aws-serverless-router)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tmorell_aws-serverless-router&metric=alert_status)](https://sonarcloud.io/dashboard?id=tmorell_aws-serverless-router)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=tmorell_aws-serverless-router&metric=coverage)](https://sonarcloud.io/dashboard?id=tmorell_aws-serverless-router)
+
+<div>
+
+![npm](https://img.shields.io/npm/v/aws-serverless-router)
+![node](https://img.shields.io/node/v/aws-serverless-router)
+![NPM](https://img.shields.io/npm/l/aws-serverless-router)
+
+</div>
+
 # AWS Serverless Router
 `AWS Serverless Router` is a general purpose routing library supporting `API Gateway` and `SNS`.
 
