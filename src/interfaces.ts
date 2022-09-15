@@ -1,5 +1,6 @@
 import type { APIGatewayEvent, SNSEvent, SNSEventRecord } from "aws-lambda";
 
+type ApiCallback = (req: HttpRequest, res: HttpResponse, event: APIGatewayEvent) => Promise<void>;
 type EventSource = "aws:api" | "aws.events" | "aws:dynamodb" | "aws:s3" | "aws:sns";
 type HttpVerb = "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT";
 type Parameter = Record<string, string | undefined> | null;
@@ -13,7 +14,7 @@ interface ApiResponse {
 interface ApiRoute {
     path: string;
     verb: HttpVerb;
-    callback: (req: HttpRequest, res: HttpResponse) => Promise<void>;
+    callback: ApiCallback;
 }
 
 interface HttpRequest {
@@ -52,13 +53,13 @@ interface Router {
     // Route
     route: (event: APIGatewayEvent | SNSEvent) => Promise<Readonly<Response>>;
     // API Gateway
-    delete: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
-    get: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
-    head: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
-    options: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
-    patch: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
-    post: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
-    put: (path: string, callback: (req: HttpRequest, res: HttpResponse) => Promise<void>) => void;
+    delete: (path: string, callback: ApiCallback) => void;
+    get: (path: string, callback: ApiCallback) => void;
+    head: (path: string, callback: ApiCallback) => void;
+    options: (path: string, callback: ApiCallback) => void;
+    patch: (path: string, callback: ApiCallback) => void;
+    post: (path: string, callback: ApiCallback) => void;
+    put: (path: string, callback: ApiCallback) => void;
     // Events
     sns: (topic: string, callback: (record: SNSEventRecord) => Promise<void>) => void;
 }
@@ -69,6 +70,7 @@ interface SnsRoute {
 }
 
 export {
+    ApiCallback,
     ApiResponse,
     EventSource,
     HttpRequest,

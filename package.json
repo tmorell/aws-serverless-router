@@ -1,12 +1,12 @@
 {
     "author": "Teo Morell <teomorell@gmail.com>",
     "bugs": {
-        "url": "https://github.com/tmorell/aws-serverless-routing/issues"
+        "url": "https://github.com/tmorell/aws-serverless-router/issues"
     },
     "dependencies": {},
-    "description": "AWS Lambda router",
+    "description": "Aws Serverless Router",
     "devDependencies": {
-        "@types/aws-lambda": "8.10.103",
+        "@types/aws-lambdas": "8.10.103",
         "@types/jest": "29.0.0",
         "@types/jest-when": "3.5.2",
         "@types/node": "18.7.16",
@@ -29,11 +29,15 @@
     "homepage": "https://github.com/tmorell/aws-serverless-routing",
     "keywords": [
         "aws",
-        "lambda"
+        "lambda",
+        "serverless",
+        "S3",
+        "SNS",
+        "SQS"
     ],
     "license": "UNLICENSED",
     "main": "lib/index.js",
-    "name": "aws-lambda-router",
+    "name": "aws-serverless-router",
     "private": true,
     "repository": {
         "type": "git",

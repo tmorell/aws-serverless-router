@@ -82,15 +82,16 @@ describe("API", (): void => {
         test("Empty", async (): Promise<void> => {
             const event = await loadEventSample<APIGatewayEvent>("api/get-pets.json");
             const router = Router();
-            router.get("/pets", async (req: HttpRequest): Promise<void> => {
+            router.get("/pets", async (req: HttpRequest, _res: HttpResponse, srcEvent: APIGatewayEvent): Promise<void> => {
                 await fakeWorkload();
                 expect(req.params).toBeNull();
                 expect(req.query).toBeNull();
                 expect(req.body).toBeNull();
+                expect(srcEvent.path).toBe("/pets/");
             });
 
             await router.route(event);
-            expect.assertions(3);
+            expect.assertions(4);
         });
 
         test("Parameters provided", async (): Promise<void> => {
