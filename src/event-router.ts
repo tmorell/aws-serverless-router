@@ -11,7 +11,7 @@ export const eventRouter = async (event: RecordEvent, routes: Array<Route>): Pro
             const snsRoute = routes
                 .filter((value): boolean => value.source === "aws:sns")
                 .map((value): SnsRoute => <SnsRoute>value.route)
-                .find((value): boolean => (<SNSEventRecord>record).Sns.TopicArn.endsWith(value.topic));
+                .find((value): boolean => (<SNSEventRecord>record).Sns.TopicArn.endsWith(`:${value.topic}`));
             if (snsRoute) {
                 const snsRecord = <SNSEventRecord>record;
                 callbacks.push(snsRoute.callback(snsRecord.Sns.Message, snsRecord));
