@@ -1,10 +1,10 @@
-import type { APIGatewayEvent, SNSEventRecord } from "aws-lambda";
+import type { APIGatewayEvent } from "aws-lambda";
 
 import { apiGateway } from "./api-gateway";
 import { ApiGatewayError } from "./api-gateway-error";
 import { EventError } from "./event-error";
 import { eventRouter } from "./event-router";
-import type { ApiCallback, EventSource, HttpRequest, HttpResponse, RecordEvent, Options, Response, Route, Router, HttpVerb } from "./interfaces";
+import type { ApiCallback, EventSource, HttpRequest, HttpResponse, HttpVerb, RecordEvent, Options, Response, Route, Router, SnsCallback } from "./interfaces";
 
 const router = (options: Options = {}): Readonly<Router> => {
     const routes: Array<Route> = [];
@@ -12,8 +12,8 @@ const router = (options: Options = {}): Readonly<Router> => {
         (path: string, callback: ApiCallback): void => {
             routes.push({ source, route: { path, verb, callback } });
         };
-    const addSnsRoute = (source: EventSource): (topic: string, callback: (message: string, record: SNSEventRecord) => Promise<void>) => void =>
-        (topic: string, callback: (message: string, record: SNSEventRecord) => Promise<void>): void => {
+    const addSnsRoute = (source: EventSource): (topic: string, callback: SnsCallback) => void =>
+        (topic: string, callback: SnsCallback): void => {
             routes.push({ source, route: { topic, callback } });
         };
     const route = (event: APIGatewayEvent | RecordEvent): Promise<Readonly<Response>> => {
