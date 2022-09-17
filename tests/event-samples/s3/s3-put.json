@@ -1,0 +1,25 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "2022-09-17T22:26:25.693Z",
+            "eventName": "ObjectCreated:Put",
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "7db538a4-e71b-49b7-a22a-c609404adcd0",
+                "bucket": {
+                    "name": "images",
+                    "arn": "arn:aws:s3:::images"
+                },
+                "object": {
+                    "key": "image.jpg",
+                    "size": 450085,
+                    "eTag": "260aa3090407d01627809cfd88092cda",
+                    "sequencer": "0063264991919D7E7C"
+                }
+            }
+        }
+    ]
+}

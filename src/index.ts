@@ -21,7 +21,7 @@ const router = (options: Options = {}): Readonly<Router> => {
             return apiGateway(<APIGatewayEvent>event, routes.filter((value): boolean => value.source === "aws:api"), options);
         }
         if ((<RecordEvent>event).Records) {
-            return eventRouter(<RecordEvent>event, routes.filter((value): boolean => value.source === "aws:sns"));
+            return eventRouter(<RecordEvent>event, routes.filter((value): boolean => value.source !== "aws:api"));
         }
         throw new EventError("Unknown event type.");
     };
