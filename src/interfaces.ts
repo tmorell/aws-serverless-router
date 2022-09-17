@@ -61,12 +61,12 @@ interface Router {
     post: (path: string, callback: ApiCallback) => void;
     put: (path: string, callback: ApiCallback) => void;
     // Events
-    sns: (topic: string, callback: (record: SNSEventRecord) => Promise<void>) => void;
+    sns: (topic: string, callback: (message: string, record: SNSEventRecord) => Promise<void>) => void;
 }
 
 interface SnsRoute {
     topic: string;
-    callback: (record: SNSEventRecord) => Promise<void>;
+    callback: (message: string, record: SNSEventRecord) => Promise<void>;
 }
 
 export {

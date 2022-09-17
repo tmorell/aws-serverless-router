@@ -13,7 +13,8 @@ export const eventRouter = async (event: RecordEvent, routes: Array<Route>): Pro
                 .map((value): SnsRoute => <SnsRoute>value.route)
                 .find((value): boolean => (<SNSEventRecord>record).Sns.TopicArn.endsWith(value.topic));
             if (snsRoute) {
-                callbacks.push(snsRoute.callback(<SNSEventRecord>record));
+                const snsRecord = <SNSEventRecord>record;
+                callbacks.push(snsRoute.callback(snsRecord.Sns.Message, snsRecord));
                 count++;
             }
         }

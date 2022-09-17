@@ -8,7 +8,7 @@
                 "MessageId": "ba98dd8b-b454-470e-925f-450d279a8b67",
                 "TopicArn": "arn:aws:sns::************:create-pet",
                 "Subject": null,
-                "Message": "Some message"
+                "Message": "A message"
             }
         }
     ]

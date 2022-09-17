@@ -12,8 +12,8 @@ const router = (options: Options = {}): Readonly<Router> => {
         (path: string, callback: ApiCallback): void => {
             routes.push({ source, route: { path, verb, callback } });
         };
-    const addSnsRoute = (source: EventSource): (topic: string, callback: (record: SNSEventRecord) => Promise<void>) => void =>
-        (topic: string, callback: (record: SNSEventRecord) => Promise<void>): void => {
+    const addSnsRoute = (source: EventSource): (topic: string, callback: (message: string, record: SNSEventRecord) => Promise<void>) => void =>
+        (topic: string, callback: (message: string, record: SNSEventRecord) => Promise<void>): void => {
             routes.push({ source, route: { topic, callback } });
         };
     const route = (event: APIGatewayEvent | RecordEvent): Promise<Readonly<Response>> => {

@@ -22,10 +22,10 @@ describe("SNS", (): void => {
     test("Single event", async (): Promise<void> => {
         const event = await loadEventSample<SNSEvent>("sns/sns-single.json");
         const router = Router();
-        router.sns("create-pet", async (record: SNSEventRecord): Promise<void> => {
+        router.sns("create-pet", async (message: string, record: SNSEventRecord): Promise<void> => {
             await fakeWorkload();
             expect(record.Sns.TopicArn.endsWith("create-pet")).toBeTruthy();
-            expect(record.Sns.Message).toBe("Some message");
+            expect(message).toBe("A message");
         });
 
         const r = await router.route(event);
@@ -36,9 +36,9 @@ describe("SNS", (): void => {
     test("Multiple events", async (): Promise<void> => {
         const event = await loadEventSample<SNSEvent>("sns/sns-multiple.json");
         const router = Router();
-        router.sns("create-pet", async (record: SNSEventRecord): Promise<void> => {
+        router.sns("create-pet", async (message: string): Promise<void> => {
             await fakeWorkload();
-            expect(record.Sns.TopicArn.endsWith("create-pet")).toBeTruthy();
+            expect(message).toBeTruthy();
         });
 
         const r = await router.route(event);
