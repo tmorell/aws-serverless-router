@@ -4,6 +4,7 @@ type ApiCallback = (req: HttpRequest, res: HttpResponse, event: APIGatewayEvent)
 type EventSource = "aws:api" | "aws.events" | "aws:dynamodb" | "aws:s3" | "aws:sns";
 type HttpVerb = "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT";
 type Parameter = Record<string, string | undefined> | null;
+type SnsCallback<T> = (message: T, record: SNSEventRecord) => Promise<void>;
 
 interface ApiResponse {
     body: string;
@@ -61,17 +62,19 @@ interface Router {
     post: (path: string, callback: ApiCallback) => void;
     put: (path: string, callback: ApiCallback) => void;
     // Events
-    sns: (topic: string, callback: (record: SNSEventRecord) => Promise<void>) => void;
+    sns: <T>(topic: string, callback: SnsCallback<T>) => void;
 }
 
 interface SnsRoute {
     topic: string;
-    callback: (record: SNSEventRecord) => Promise<void>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    callback: SnsCallback<any>;
 }
 
 export {
     ApiCallback,
     ApiResponse,
+    ApiRoute,
     EventSource,
     HttpRequest,
     HttpResponse,
@@ -80,8 +83,8 @@ export {
     Parameter,
     RecordEvent,
     Response,
-    ApiRoute,
     Route,
     Router,
+    SnsCallback,
     SnsRoute,
 };

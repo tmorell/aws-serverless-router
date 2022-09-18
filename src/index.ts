@@ -1,10 +1,10 @@
-import type { APIGatewayEvent, SNSEventRecord } from "aws-lambda";
+import type { APIGatewayEvent } from "aws-lambda";
 
 import { apiGateway } from "./api-gateway";
 import { ApiGatewayError } from "./api-gateway-error";
 import { EventError } from "./event-error";
 import { eventRouter } from "./event-router";
-import type { ApiCallback, EventSource, HttpRequest, HttpResponse, RecordEvent, Options, Response, Route, Router, HttpVerb } from "./interfaces";
+import type { ApiCallback, EventSource, HttpRequest, HttpResponse, HttpVerb, RecordEvent, Options, Response, Route, Router, SnsCallback } from "./interfaces";
 
 const router = (options: Options = {}): Readonly<Router> => {
     const routes: Array<Route> = [];
@@ -12,8 +12,8 @@ const router = (options: Options = {}): Readonly<Router> => {
         (path: string, callback: ApiCallback): void => {
             routes.push({ source, route: { path, verb, callback } });
         };
-    const addSnsRoute = (source: EventSource): (topic: string, callback: (record: SNSEventRecord) => Promise<void>) => void =>
-        (topic: string, callback: (record: SNSEventRecord) => Promise<void>): void => {
+    const addSnsRoute = (source: EventSource): <T>(topic: string, callback: SnsCallback<T>) => void =>
+        <T>(topic: string, callback: SnsCallback<T>): void => {
             routes.push({ source, route: { topic, callback } });
         };
     const route = (event: APIGatewayEvent | RecordEvent): Promise<Readonly<Response>> => {
@@ -21,7 +21,7 @@ const router = (options: Options = {}): Readonly<Router> => {
             return apiGateway(<APIGatewayEvent>event, routes.filter((value): boolean => value.source === "aws:api"), options);
         }
         if ((<RecordEvent>event).Records) {
-            return eventRouter(<RecordEvent>event, routes.filter((value): boolean => value.source === "aws:sns"));
+            return eventRouter(<RecordEvent>event, routes.filter((value): boolean => value.source !== "aws:api"));
         }
         throw new EventError("Unknown event type.");
     };

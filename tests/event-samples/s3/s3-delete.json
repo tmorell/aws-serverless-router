@@ -1,0 +1,23 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "2022-09-17T22:29:33.149Z",
+            "eventName": "ObjectRemoved:Delete",
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "8439f634-45bf-4c72-b06d-2e6b2d9675d2",
+                "bucket": {
+                    "name": "images",
+                    "arn": "arn:aws:s3:::images"
+                },
+                "object": {
+                    "key": "image.jpg",
+                    "sequencer": "0063264A4D1DCFE895"
+                }
+            }
+        }
+    ]
+}
