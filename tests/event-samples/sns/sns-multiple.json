@@ -8,7 +8,7 @@
                 "MessageId": "b7db865a-6fdf-46cf-8128-e81382201008",
                 "TopicArn": "arn:aws:sns::************:create-pet",
                 "Subject": null,
-                "Message": "Message 01"
+                "Message": "A message"
             }
         },
         {
@@ -19,7 +19,7 @@
                 "MessageId": "266d462b-29a7-414e-8b56-69a0602bff0c",
                 "TopicArn": "arn:aws:sns::************:create-pet",
                 "Subject": null,
-                "Message": "Message 02"
+                "Message": "123"
             }
         }
     ]

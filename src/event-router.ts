@@ -1,6 +1,7 @@
 import type { SNSEventRecord } from "aws-lambda";
 
 import type { RecordEvent, Response, Route, SnsRoute } from "./interfaces";
+import { parseObject } from "./utils";
 
 export const eventRouter = async (event: RecordEvent, routes: Array<Route>): Promise<Readonly<Response>> => {
     const callbacks: Array<Promise<void>> = [];
@@ -14,7 +15,7 @@ export const eventRouter = async (event: RecordEvent, routes: Array<Route>): Pro
                 .find((value): boolean => (<SNSEventRecord>record).Sns.TopicArn.endsWith(`:${value.topic}`));
             if (snsRoute) {
                 const snsRecord = <SNSEventRecord>record;
-                callbacks.push(snsRoute.callback(snsRecord.Sns.Message, snsRecord));
+                callbacks.push(snsRoute.callback(parseObject(snsRecord.Sns.Message), snsRecord));
                 count++;
             }
         }

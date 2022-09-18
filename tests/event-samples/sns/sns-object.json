@@ -8,7 +8,7 @@
                 "MessageId": "ba98dd8b-b454-470e-925f-450d279a8b67",
                 "TopicArn": "arn:aws:sns::************:create-pet",
                 "Subject": null,
-                "Message": "A message"
+                "Message": "{\"id\":\"4398ac6b-63b9-45a7-9c32-206fc94aa4b8\",\"name\":\"Max\",\"age\":12}"
             }
         }
     ]

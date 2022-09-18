@@ -12,8 +12,9 @@ const router = (options: Options = {}): Readonly<Router> => {
         (path: string, callback: ApiCallback): void => {
             routes.push({ source, route: { path, verb, callback } });
         };
-    const addSnsRoute = (source: EventSource): (topic: string, callback: SnsCallback) => void =>
-        (topic: string, callback: SnsCallback): void => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const addSnsRoute = (source: EventSource): (topic: string, callback: SnsCallback<any>) => void =>
+        <T>(topic: string, callback: SnsCallback<T>): void => {
             routes.push({ source, route: { topic, callback } });
         };
     const route = (event: APIGatewayEvent | RecordEvent): Promise<Readonly<Response>> => {
