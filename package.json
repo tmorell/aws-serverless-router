@@ -20,7 +20,7 @@
         "jest-when": "3.5.1",
         "license-compliance": "1.2.4",
         "ts-jest": "29.0.1",
-        "ts-node": "10.9.1",
+        "ts-node": "10.9.2",
         "typescript": "4.8.3"
     },
     "engines": {
