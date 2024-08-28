@@ -6,7 +6,7 @@
     "dependencies": {},
     "description": "AWS Serverless Router",
     "devDependencies": {
-        "@types/aws-lambda": "8.10.104",
+        "@types/aws-lambda": "8.10.145",
         "@types/jest": "29.0.2",
         "@types/jest-when": "3.5.2",
         "@types/node": "18.7.18",
