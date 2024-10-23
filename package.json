@@ -9,7 +9,7 @@
         "@types/aws-lambda": "8.10.104",
         "@types/jest": "29.0.2",
         "@types/jest-when": "3.5.2",
-        "@types/node": "18.7.18",
+        "@types/node": "18.19.59",
         "@typescript-eslint/eslint-plugin": "5.37.0",
         "@typescript-eslint/parser": "5.37.0",
         "eslint": "8.23.1",
